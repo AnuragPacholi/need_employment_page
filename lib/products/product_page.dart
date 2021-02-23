@@ -14,7 +14,7 @@ class _ProductPageState extends State<ProductPage>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(vsync: this, length: 2);
+    _tabController = TabController(vsync: this, length: 3);
   }
 
   @override
@@ -95,10 +95,13 @@ class _ProductPageState extends State<ProductPage>
               child: VStack([
             TabBar(
               controller: _tabController,
-              indicatorColor: Colors.redAccent,
-              indicatorSize: TabBarIndicatorSize.label,
+              isScrollable: true,
+              labelPadding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+              indicatorPadding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+              indicatorColor: Colors.red,
+              indicatorSize: TabBarIndicatorSize.tab,
               labelColor: Vx.red600,
-              unselectedLabelColor: Vx.red400,
+              unselectedLabelColor: Vx.red300,
               labelStyle: TextStyle(
                   fontFamily: GoogleFonts.lobster().fontFamily, fontSize: 20),
               tabs: [
@@ -107,6 +110,9 @@ class _ProductPageState extends State<ProductPage>
                 ),
                 Tab(
                   text: "Handicrafts",
+                ),
+                Tab(
+                  text: "Custom Orders",
                 )
               ],
             ),
@@ -155,7 +161,7 @@ class _ProductPageState extends State<ProductPage>
                   subtitle: "Seller from Andhra Pradesh, India",
                   imageadd: "assets/images/tomato.jpeg",
                 )
-              ]).scrollVertical().p12(),
+              ]).scrollVertical().px12().py(5),
 
               // Second Tab Handicrafts.
               VStack([
@@ -196,7 +202,235 @@ class _ProductPageState extends State<ProductPage>
                   subtitle: "Seller from Gujarat, India",
                   imageadd: "assets/images/handicrafts/woodenelephant.jpg",
                 )
-              ]).scrollVertical().p12()
+              ]).scrollVertical().px12().py(5),
+
+              VStack([
+                "Give Your Custom Order!!"
+                    .richText
+                    .red400
+                    .bold
+                    .size(18)
+                    .make()
+                    .pLTRB(0, 0, 0, 15)
+                    .centered(),
+
+                // Enter Product Name.
+                Container(
+                  child: Row(
+                    children: <Widget>[
+                      Padding(padding: EdgeInsets.fromLTRB(5, 0, 0, 0)),
+                      Text(
+                        'Enter Product Name:',
+                        style: TextStyle(
+                            fontFamily: GoogleFonts.merienda().fontFamily,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Vx.red600),
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Product name text field.
+                Container(
+                  padding: EdgeInsets.fromLTRB(15, 10, 20, 20),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 50,
+                        padding: EdgeInsets.only(left: 10, bottom: 2),
+                        decoration: BoxDecoration(
+                            color: Vx.gray100,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Vx.red400,
+                                  blurRadius: 15,
+                                  offset: Offset(0, 6))
+                            ]),
+                        child: TextField(
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'Enter Product Name',
+                              hintStyle: TextStyle(color: Vx.red400)),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Enter Product ID.
+
+                Container(
+                  child: Row(
+                    children: <Widget>[
+                      Padding(padding: EdgeInsets.fromLTRB(5, 0, 0, 0)),
+                      Text(
+                        'Enter Product ID:',
+                        style: TextStyle(
+                            fontFamily: GoogleFonts.merienda().fontFamily,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Vx.red600),
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Enter Product ID Text Field.
+                Container(
+                  padding: EdgeInsets.fromLTRB(15, 10, 20, 20),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 50,
+                        padding: EdgeInsets.only(left: 10, bottom: 2),
+                        decoration: BoxDecoration(
+                            color: Vx.gray100,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Vx.red400,
+                                  blurRadius: 15,
+                                  offset: Offset(0, 6))
+                            ]),
+                        child: TextField(
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'Enter Product ID',
+                              hintStyle: TextStyle(color: Vx.red400)),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Enter Quantity Required.
+                Container(
+                  child: Row(
+                    children: <Widget>[
+                      Padding(padding: EdgeInsets.fromLTRB(5, 0, 0, 0)),
+                      Text(
+                        'Enter Quantity Required:',
+                        style: TextStyle(
+                            fontFamily: GoogleFonts.merienda().fontFamily,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Vx.red600),
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Enter Quantity Required Text Field.
+                Container(
+                  padding: EdgeInsets.fromLTRB(15, 10, 20, 20),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 50,
+                        padding: EdgeInsets.only(left: 10, bottom: 2),
+                        decoration: BoxDecoration(
+                            color: Vx.gray100,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Vx.red400,
+                                  blurRadius: 15,
+                                  offset: Offset(0, 6))
+                            ]),
+                        child: TextField(
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText:
+                                  'Enter Quantity in Kg, Litres, Nos, etc. ',
+                              hintStyle: TextStyle(color: Vx.red400)),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Any extra information you want to mention to the seller.
+                Container(
+                  child: Row(
+                    children: <Widget>[
+                      Padding(padding: EdgeInsets.fromLTRB(5, 0, 0, 0)),
+                      Flexible(
+                        child: Text(
+                          'Any extra information you want to mention to the seller:',
+                          style: TextStyle(
+                              fontFamily: GoogleFonts.merienda().fontFamily,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Vx.red600),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+
+                // Text Field of extra mentions.
+                Container(
+                  padding: EdgeInsets.fromLTRB(15, 10, 20, 20),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 100,
+                        padding: EdgeInsets.only(left: 10, bottom: 2),
+                        decoration: BoxDecoration(
+                            color: Vx.gray100,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Vx.red400,
+                                  blurRadius: 15,
+                                  offset: Offset(0, 6))
+                            ]),
+                        child: TextField(
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'Write any extra info (optional)',
+                              hintStyle: TextStyle(color: Vx.red400)),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                // Order Button
+                Container(
+                  padding: EdgeInsets.fromLTRB(2, 5, 2, 25),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Vx.red400,
+                                  blurRadius: 10,
+                                  offset: Offset(0, 10))
+                            ],
+                            borderRadius: BorderRadius.circular(10),
+                            gradient: LinearGradient(colors: [
+                              Color.fromRGBO(220, 54, 54, 1),
+                              Color.fromRGBO(220, 54, 54, .7),
+                            ])),
+                        child: Center(
+                          child: Text(
+                            "Place Custom Order",
+                            style: TextStyle(
+                                color: Vx.gray100,
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: GoogleFonts.sahitya().fontFamily),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ]).scrollVertical().px12().py(5)
             ]).expand()
           ])).gray100.make(),
         ).expand()
@@ -212,7 +446,6 @@ class Productcard extends StatelessWidget {
   Productcard({Key key, this.title, this.subtitle, this.imageadd})
       : super(key: key);
 
-  // var pic1 = "assets/images/wheat.jpg";
   @override
   Widget build(BuildContext context) {
     return HStack([

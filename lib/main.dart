@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:flutterlooks/fun_ui/christmas.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'products/product_page.dart';
-// import 'dart:html';
 
 import 'coolors.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'products/product_page.dart';
+import 'jobs/job_page.dart';
 
 import 'coolors.dart';
 
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ProductPage(),
+      home: JobPage(),
       theme: ThemeData(
         accentColor: Coolors.white,
         primaryColor: Coolors.white,

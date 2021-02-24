@@ -2,28 +2,26 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class ProductPage extends StatefulWidget {
+class JobPage extends StatefulWidget {
   @override
-  _ProductPageState createState() => _ProductPageState();
+  _JobPageState createState() => _JobPageState();
 }
 
-class _ProductPageState extends State<ProductPage>
+class _JobPageState extends State<JobPage>
     with TickerProviderStateMixin {
   TabController _tabController;
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(vsync: this, length: 3);
+    _tabController = TabController(vsync: this, length: 2);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Vx.red600,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
+      appBar: new AppBar(
         leading: VStack([
           VxBox().size(20, 2).white.make(),
           5.heightBox,
@@ -31,6 +29,11 @@ class _ProductPageState extends State<ProductPage>
           5.heightBox,
           VxBox().size(15, 2).white.make(),
         ]).pOnly(left: 16, top: 16),
+        backgroundColor: Colors.redAccent,
+        actions: <Widget>[
+          new IconButton(
+            icon: new Icon(Icons.search_outlined), color: Colors.white, onPressed: () => debugPrint("Hey"))
+        ],
       ),
       body: VStack([
         VxBox(
@@ -42,47 +45,31 @@ class _ProductPageState extends State<ProductPage>
                   // .neumorphic(
                   //     color: Vx.gray100, elevation: 0) // Comment this line.
                   .bgImage(DecorationImage(
-                    image: AssetImage('assets/images/sellerboy.png'),
+                    image: AssetImage('assets/images/job.png'),
                   ))
-                  .alignCenterRight
+                  .alignCenter
                   .make()
                   .py0(),
-              VxBox()
-                  .size(90, 100)
-                  // .neumorphic(
-                  //     color: Vx.gray100, elevation: 0) // Comment this line.
-                  .bgImage(DecorationImage(
-                    image: AssetImage('assets/images/sellers.png'),
-                  ))
-                  .alignCenterLeft
-                  .make()
-                  .py0(),
+              
             ],
             mainAxisAlignment: MainAxisAlignment.center,
           ),
-          "Buy, "
+          "\t\tIf, "
               .richText
               .withTextSpanChildren([
-                "Whatever ".textSpan.white.bold.make(),
-                'You Need!'.textSpan.white.make()
+                "Oppurtunity ".textSpan.white.bold.make(),
+                "doesn't ".textSpan.white.make(),
+                "Knock, ".textSpan.white.bold.italic.make(),
+                "\n \t\t\t\t\t\t\t\t\t\t Build ".textSpan.white.bold.make(),
+                "the ".textSpan.white.make(),
+                "Door !".textSpan.white.bold.italic.make(),
               ])
               .white
               .xl2
               .make()
               .p0(),
-          VxTextField(
-            borderType: VxTextFieldBorderType.none,
-            borderRadius: 18,
-            hint: "Search",
-            fillColor: Vx.gray100.withOpacity(0.3),
-            contentPaddingTop: 13,
-            autofocus: false,
-            prefixIcon: Icon(Icons.search_outlined, color: Colors.white),
-          )
-              .customTheme(themeData: ThemeData(brightness: Brightness.dark))
-              .cornerRadius(10)
-              .py(8)
-              .px(14)
+          
+              
         ].column())
             .padding(Vx.mV0)
             .alignTopCenter
@@ -96,8 +83,8 @@ class _ProductPageState extends State<ProductPage>
             TabBar(
               controller: _tabController,
               isScrollable: true,
-              labelPadding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-              indicatorPadding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+              labelPadding: EdgeInsets.fromLTRB(35, 0, 10, 0),
+              indicatorPadding: EdgeInsets.fromLTRB(45, 0, 0, 0),
               indicatorColor: Colors.red,
               indicatorSize: TabBarIndicatorSize.tab,
               labelColor: Vx.red600,
@@ -106,20 +93,18 @@ class _ProductPageState extends State<ProductPage>
                   fontFamily: GoogleFonts.lobster().fontFamily, fontSize: 20),
               tabs: [
                 Tab(
-                  text: "Agriculture",
+                  text: "We are Hiring",
                 ),
                 Tab(
-                  text: "Handicrafts",
+                  text: "Upload Jobs",
                 ),
-                Tab(
-                  text: "Custom Orders",
-                )
+                
               ],
             ),
             TabBarView(controller: _tabController, children: [
               // First Tab Agriculture.
               VStack([
-                "Buy Agriculture Products!"
+                "Apply for a Job!"
                     .richText
                     .red400
                     .bold
@@ -127,85 +112,31 @@ class _ProductPageState extends State<ProductPage>
                     .make()
                     .centered(),
                 Productcard(
-                  title: "Fresh Bananas",
-                  subtitle: "Seller from Gujarat, India",
-                  imageadd: "assets/images/banana.png",
+                  title: "Farm Manager",
+                  subtitle: "Gujarat, India",
+                  imageadd: "assets/images/manager.png",
                 ),
                 Productcard(
-                  title: "Wheat 100kgs",
-                  subtitle: "Seller from Madhya Pradesh, India",
-                  imageadd: "assets/images/wheat.jpg",
+                  title: "Agriculture Engineer",
+                  subtitle: "Madhya Pradesh, India",
+                  imageadd: "assets/images/engg.jpg",
                 ),
                 Productcard(
-                  title: "Fresh Mangoes",
-                  subtitle: "Seller from Uttar Pradesh, India",
-                  imageadd: "assets/images/mango.jpg",
+                  title: "Farmworker",
+                  subtitle: "Uttar Pradesh, India",
+                  imageadd: "assets/images/worker.jpg",
                 ),
                 Productcard(
-                  title: "Rice",
-                  subtitle: "Seller from West Bengal, India",
-                  imageadd: "assets/images/rice.jpg",
+                  title: "Farm consultant",
+                  subtitle: "West Bengal, India",
+                  imageadd: "assets/images/consultant.jpg",
                 ),
-                Productcard(
-                  title: "Fresh Strawberries",
-                  subtitle: "Seller from Himachal, India",
-                  imageadd: "assets/images/strawberry.jpg",
-                ),
-                Productcard(
-                  title: "Pigeon Peas Lentils (Toor Dal)",
-                  subtitle: "Seller from Maharashtra, India",
-                  imageadd: "assets/images/pulses.jpg",
-                ),
-                Productcard(
-                  title: "Fresh Tomatos",
-                  subtitle: "Seller from Andhra Pradesh, India",
-                  imageadd: "assets/images/tomato.jpeg",
-                )
+                
               ]).scrollVertical().px12().py(5),
 
               // Second Tab Handicrafts.
               VStack([
-                "Buy Handicrafts!"
-                    .richText
-                    .red400
-                    .bold
-                    .size(15)
-                    .make()
-                    .centered(),
-                Productcard(
-                  title: "Handmade Handbags",
-                  subtitle: "Seller from Rajasthan, India",
-                  imageadd: "assets/images/handicrafts/handbag.jpg",
-                ),
-                Productcard(
-                  title: "Wooden Dolls",
-                  subtitle: "Seller from Gujarat, India",
-                  imageadd: "assets/images/handicrafts/dolls.jpg",
-                ),
-                Productcard(
-                  title: "Marble Bowls and Vass",
-                  subtitle: "Seller from Rajasthan, India",
-                  imageadd: "assets/images/handicrafts/marblebowlsvass.jpg",
-                ),
-                Productcard(
-                  title: "Oil Lamps",
-                  subtitle: "Seller from Madhya Pradesh, India",
-                  imageadd: "assets/images/handicrafts/oillamps.jpeg",
-                ),
-                Productcard(
-                  title: "Wooden Statues",
-                  subtitle: "Seller from West Bengal, India",
-                  imageadd: "assets/images/handicrafts/statues.png",
-                ),
-                Productcard(
-                  title: "Wooden Elephant",
-                  subtitle: "Seller from Gujarat, India",
-                  imageadd: "assets/images/handicrafts/woodenelephant.jpg",
-                )
-              ]).scrollVertical().px12().py(5),
-
-              VStack([
-                "Give Your Custom Order!!"
+                "Add a Job!!"
                     .richText
                     .red400
                     .bold
@@ -220,7 +151,7 @@ class _ProductPageState extends State<ProductPage>
                     children: <Widget>[
                       Padding(padding: EdgeInsets.fromLTRB(5, 0, 0, 0)),
                       Text(
-                        'Enter Product Name:',
+                        'Job Title:',
                         style: TextStyle(
                             fontFamily: GoogleFonts.merienda().fontFamily,
                             fontSize: 18,
@@ -244,14 +175,14 @@ class _ProductPageState extends State<ProductPage>
                             borderRadius: BorderRadius.circular(10),
                             boxShadow: [
                               BoxShadow(
-                                  color: Vx.red400,
+                                  color: Vx.gray300,
                                   blurRadius: 15,
                                   offset: Offset(0, 6))
                             ]),
                         child: TextField(
                           decoration: InputDecoration(
                               border: InputBorder.none,
-                              hintText: 'Enter Product Name',
+                              hintText: 'Enter Job Title',
                               hintStyle: TextStyle(color: Vx.red400)),
                         ),
                       ),
@@ -266,7 +197,7 @@ class _ProductPageState extends State<ProductPage>
                     children: <Widget>[
                       Padding(padding: EdgeInsets.fromLTRB(5, 0, 0, 0)),
                       Text(
-                        'Enter Product ID:',
+                        'Company Name:',
                         style: TextStyle(
                             fontFamily: GoogleFonts.merienda().fontFamily,
                             fontSize: 18,
@@ -290,14 +221,14 @@ class _ProductPageState extends State<ProductPage>
                             borderRadius: BorderRadius.circular(10),
                             boxShadow: [
                               BoxShadow(
-                                  color: Vx.red400,
+                                  color: Vx.gray300,
                                   blurRadius: 15,
                                   offset: Offset(0, 6))
                             ]),
                         child: TextField(
                           decoration: InputDecoration(
                               border: InputBorder.none,
-                              hintText: 'Enter Product ID',
+                              hintText: 'Enter Company Name',
                               hintStyle: TextStyle(color: Vx.red400)),
                         ),
                       ),
@@ -311,7 +242,7 @@ class _ProductPageState extends State<ProductPage>
                     children: <Widget>[
                       Padding(padding: EdgeInsets.fromLTRB(5, 0, 0, 0)),
                       Text(
-                        'Enter Quantity Required:',
+                        'Vacancies Available:',
                         style: TextStyle(
                             fontFamily: GoogleFonts.merienda().fontFamily,
                             fontSize: 18,
@@ -335,7 +266,7 @@ class _ProductPageState extends State<ProductPage>
                             borderRadius: BorderRadius.circular(10),
                             boxShadow: [
                               BoxShadow(
-                                  color: Vx.red400,
+                                  color: Vx.gray300,
                                   blurRadius: 15,
                                   offset: Offset(0, 6))
                             ]),
@@ -343,7 +274,7 @@ class _ProductPageState extends State<ProductPage>
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText:
-                                  'Enter Quantity in Kg, Litres, Nos, etc. ',
+                                  'Vacancies Available',
                               hintStyle: TextStyle(color: Vx.red400)),
                         ),
                       ),
@@ -358,7 +289,7 @@ class _ProductPageState extends State<ProductPage>
                       Padding(padding: EdgeInsets.fromLTRB(5, 0, 0, 0)),
                       Flexible(
                         child: Text(
-                          'Any extra information you want to mention to the seller:',
+                          'Prerequisites:',
                           style: TextStyle(
                               fontFamily: GoogleFonts.merienda().fontFamily,
                               fontSize: 18,
@@ -383,14 +314,14 @@ class _ProductPageState extends State<ProductPage>
                             borderRadius: BorderRadius.circular(10),
                             boxShadow: [
                               BoxShadow(
-                                  color: Vx.red400,
+                                  color: Vx.gray300,
                                   blurRadius: 15,
-                                  offset: Offset(0, 6))
+                                  offset: Offset(0, 6)) 
                             ]),
                         child: TextField(
                           decoration: InputDecoration(
                               border: InputBorder.none,
-                              hintText: 'Write any extra info (optional)',
+                              hintText: 'Prerequisites for the Job',
                               hintStyle: TextStyle(color: Vx.red400)),
                         ),
                       ),
@@ -399,17 +330,18 @@ class _ProductPageState extends State<ProductPage>
                 ),
                 // Order Button
                 Container(
-                  padding: EdgeInsets.fromLTRB(2, 5, 2, 25),
+                  padding: EdgeInsets.fromLTRB(50, 5, 2, 25),
                   child: Column(
                     children: [
                       Container(
                         height: 50,
+                        width: 180.0,
                         decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
-                                  color: Vx.red400,
-                                  blurRadius: 10,
-                                  offset: Offset(0, 10))
+                                  color: Vx.gray300,
+                                  blurRadius: 15,
+                                  offset: Offset(0, 4))
                             ],
                             borderRadius: BorderRadius.circular(10),
                             gradient: LinearGradient(colors: [
@@ -418,7 +350,7 @@ class _ProductPageState extends State<ProductPage>
                             ])),
                         child: Center(
                           child: Text(
-                            "Place Custom Order",
+                            "Add Job",
                             style: TextStyle(
                                 color: Vx.gray100,
                                 fontSize: 30,
@@ -430,7 +362,8 @@ class _ProductPageState extends State<ProductPage>
                     ],
                   ),
                 )
-              ]).scrollVertical().px12().py(5)
+              ]).scrollVertical().px12().py(5),
+
             ]).expand()
           ])).gray100.make(),
         ).expand()
@@ -455,7 +388,7 @@ class Productcard extends StatelessWidget {
         [
           title.text.bold.red600.make(),
           3.heightBox,
-          subtitle.text.make().shimmer(),
+          subtitle.text.make(),
           5.heightBox,
           [
             VxRating(

@@ -7,8 +7,7 @@ class JobPage extends StatefulWidget {
   _JobPageState createState() => _JobPageState();
 }
 
-class _JobPageState extends State<JobPage>
-    with TickerProviderStateMixin {
+class _JobPageState extends State<JobPage> with TickerProviderStateMixin {
   TabController _tabController;
 
   @override
@@ -29,10 +28,12 @@ class _JobPageState extends State<JobPage>
           5.heightBox,
           VxBox().size(15, 2).white.make(),
         ]).pOnly(left: 16, top: 16),
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Vx.red600,
         actions: <Widget>[
           new IconButton(
-            icon: new Icon(Icons.search_outlined), color: Colors.white, onPressed: () => debugPrint("Hey"))
+              icon: new Icon(Icons.search_outlined),
+              color: Colors.white,
+              onPressed: () => debugPrint("Hey"))
         ],
       ),
       body: VStack([
@@ -41,16 +42,15 @@ class _JobPageState extends State<JobPage>
           Row(
             children: [
               VxBox()
-                  .size(115, 100)
+                  .size(250, 120)
                   // .neumorphic(
                   //     color: Vx.gray100, elevation: 0) // Comment this line.
                   .bgImage(DecorationImage(
-                    image: AssetImage('assets/images/job.png'),
+                    image: AssetImage('assets/images/hiring.png'),
                   ))
                   .alignCenter
                   .make()
-                  .py0(),
-              
+                  .pOnly(top: 10, bottom: 3),
             ],
             mainAxisAlignment: MainAxisAlignment.center,
           ),
@@ -65,11 +65,9 @@ class _JobPageState extends State<JobPage>
                 "Door !".textSpan.white.bold.italic.make(),
               ])
               .white
-              .xl2
+              .size(20)
               .make()
               .p0(),
-          
-              
         ].column())
             .padding(Vx.mV0)
             .alignTopCenter
@@ -83,8 +81,8 @@ class _JobPageState extends State<JobPage>
             TabBar(
               controller: _tabController,
               isScrollable: true,
-              labelPadding: EdgeInsets.fromLTRB(35, 0, 10, 0),
-              indicatorPadding: EdgeInsets.fromLTRB(45, 0, 0, 0),
+              labelPadding: EdgeInsets.fromLTRB(49, 0, 0, 0),
+              // indicatorPadding: EdgeInsets.fromLTRB(50, 0, 0, 0),
               indicatorColor: Colors.red,
               indicatorSize: TabBarIndicatorSize.tab,
               labelColor: Vx.red600,
@@ -98,7 +96,6 @@ class _JobPageState extends State<JobPage>
                 Tab(
                   text: "Upload Jobs",
                 ),
-                
               ],
             ),
             TabBarView(controller: _tabController, children: [
@@ -110,28 +107,32 @@ class _JobPageState extends State<JobPage>
                     .bold
                     .size(15)
                     .make()
+                    .pOnly(top: 5)
                     .centered(),
                 Productcard(
                   title: "Farm Manager",
                   subtitle: "Gujarat, India",
                   imageadd: "assets/images/manager.png",
+                  vaca: "1",
                 ),
                 Productcard(
                   title: "Agriculture Engineer",
                   subtitle: "Madhya Pradesh, India",
                   imageadd: "assets/images/engg.jpg",
+                  vaca: "2",
                 ),
                 Productcard(
-                  title: "Farmworker",
+                  title: "Farm Worker",
                   subtitle: "Uttar Pradesh, India",
                   imageadd: "assets/images/worker.jpg",
+                  vaca: "4",
                 ),
                 Productcard(
-                  title: "Farm consultant",
+                  title: "Farm Consultant",
                   subtitle: "West Bengal, India",
                   imageadd: "assets/images/consultant.jpg",
+                  vaca: "2",
                 ),
-                
               ]).scrollVertical().px12().py(5),
 
               // Second Tab Handicrafts.
@@ -142,7 +143,7 @@ class _JobPageState extends State<JobPage>
                     .bold
                     .size(18)
                     .make()
-                    .pLTRB(0, 0, 0, 15)
+                    .pLTRB(0, 5, 0, 10)
                     .centered(),
 
                 // Enter Product Name.
@@ -273,8 +274,7 @@ class _JobPageState extends State<JobPage>
                         child: TextField(
                           decoration: InputDecoration(
                               border: InputBorder.none,
-                              hintText:
-                                  'Vacancies Available',
+                              hintText: 'Vacancies Available',
                               hintStyle: TextStyle(color: Vx.red400)),
                         ),
                       ),
@@ -316,7 +316,7 @@ class _JobPageState extends State<JobPage>
                               BoxShadow(
                                   color: Vx.gray300,
                                   blurRadius: 15,
-                                  offset: Offset(0, 6)) 
+                                  offset: Offset(0, 6))
                             ]),
                         child: TextField(
                           decoration: InputDecoration(
@@ -330,7 +330,8 @@ class _JobPageState extends State<JobPage>
                 ),
                 // Order Button
                 Container(
-                  padding: EdgeInsets.fromLTRB(50, 5, 2, 25),
+                  padding: EdgeInsets.fromLTRB(0, 0, 0, 25),
+                  alignment: Alignment.bottomCenter,
                   child: Column(
                     children: [
                       Container(
@@ -363,7 +364,6 @@ class _JobPageState extends State<JobPage>
                   ),
                 )
               ]).scrollVertical().px12().py(5),
-
             ]).expand()
           ])).gray100.make(),
         ).expand()
@@ -374,9 +374,9 @@ class _JobPageState extends State<JobPage>
 
 // Product Cards.
 class Productcard extends StatelessWidget {
-  final String title, subtitle, imageadd;
+  final String title, subtitle, imageadd, vaca;
 
-  Productcard({Key key, this.title, this.subtitle, this.imageadd})
+  Productcard({Key key, this.title, this.subtitle, this.imageadd, this.vaca})
       : super(key: key);
 
   @override
@@ -386,17 +386,14 @@ class Productcard extends StatelessWidget {
       20.widthBox,
       VStack(
         [
-          title.text.bold.red600.make(),
+          title.text.size(16).bold.red600.make(),
           3.heightBox,
           subtitle.text.make(),
-          5.heightBox,
+          3.heightBox,
           [
-            VxRating(
-              size: 13,
-              onRatingUpdate: (value) {},
-            ),
+            'Vacancies: '.text.black.make(),
             5.widthBox,
-            "(100)".text.xs.red400.make(),
+            vaca.text.size(15).red400.make(),
           ].row()
         ],
         crossAlignment: CrossAxisAlignment.start,

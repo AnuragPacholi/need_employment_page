@@ -80,11 +80,8 @@ class _JobPageState extends State<JobPage> with TickerProviderStateMixin {
               child: VStack([
             TabBar(
               controller: _tabController,
-              isScrollable: true,
-              labelPadding: EdgeInsets.fromLTRB(49, 0, 0, 0),
-              // indicatorPadding: EdgeInsets.fromLTRB(50, 0, 0, 0),
               indicatorColor: Colors.red,
-              indicatorSize: TabBarIndicatorSize.tab,
+              indicatorSize: TabBarIndicatorSize.label,
               labelColor: Vx.red600,
               unselectedLabelColor: Vx.red300,
               labelStyle: TextStyle(
